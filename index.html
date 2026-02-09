@@ -17,7 +17,6 @@
       --shadow: 0 20px 60px rgba(0,0,0,.35);
       --radius: 22px;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;width:100%;height:100%;overflow-x:hidden}
     body{
@@ -30,17 +29,10 @@
         var(--bg);
     }
 
-    /* Background hearts */
-    .hearts-bg{
-      position:fixed; inset:0;
-      pointer-events:none;
-      overflow:hidden;
-      z-index:0;
-    }
+    /* BG hearts */
+    .hearts-bg{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;}
     .bg-heart{
-      position:absolute;
-      bottom:-70px;
-      font-size: 18px;
+      position:absolute; bottom:-70px;
       opacity:0;
       filter: drop-shadow(0 10px 25px rgba(255,79,216,.15));
       animation: floatUp linear forwards;
@@ -54,10 +46,7 @@
 
     /* Click hearts */
     .pop-heart{
-      position:fixed;
-      left:0; top:0;
-      pointer-events:none;
-      font-size: 18px;
+      position:fixed; left:0; top:0; pointer-events:none;
       animation: pop 900ms ease forwards;
       filter: drop-shadow(0 12px 28px rgba(255,79,216,.22));
       z-index: 9998;
@@ -79,7 +68,7 @@
       z-index:9999;
     }
     .modal{
-      width:min(600px, 100%);
+      width:min(620px, 100%);
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -98,7 +87,6 @@
       opacity:.75;
       z-index:-1;
     }
-
     .badge{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 14px;
@@ -118,61 +106,30 @@
       transform: rotate(45deg);
     }
 
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(24px, 3.4vw, 34px);
-      line-height:1.05;
-      letter-spacing:-.02em;
-    }
+    h1{margin:14px 0 10px; font-size: clamp(24px, 3.4vw, 34px); line-height:1.05; letter-spacing:-.02em;}
     .muted{color:var(--muted); line-height:1.55}
-    .actions{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+    .actions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap;}
 
     button{
-      border:0;
-      padding:12px 16px;
+      border:0; padding:12px 16px;
       border-radius: 14px;
       cursor:pointer;
-      font-weight:900;
+      font-weight:950;
       font-size:14px;
       transition: transform .08s ease, filter .2s ease, opacity .2s ease;
       user-select:none;
       -webkit-tap-highlight-color: transparent;
     }
     button:active{transform: scale(.98)}
-    .yes{
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:white;
-      box-shadow: 0 14px 30px rgba(255,79,216,.18);
-    }
-    .no{
-      background: rgba(255,255,255,.10);
-      color:var(--txt);
-      border:1px solid rgba(255,255,255,.14);
-      position: relative;
-    }
-    .tiny{ margin-top:12px; font-size:12px; color:rgba(255,255,255,.55); }
-
-    .shake{animation: shake .35s ease}
-    @keyframes shake{
-      0%,100%{transform:translateX(0)}
-      20%{transform:translateX(-8px)}
-      40%{transform:translateX(8px)}
-      60%{transform:translateX(-6px)}
-      80%{transform:translateX(6px)}
-    }
+    .yes{background: linear-gradient(135deg, var(--accent), var(--accent2)); color:white; box-shadow: 0 14px 30px rgba(255,79,216,.18);}
+    .no{background: rgba(255,255,255,.10); color:var(--txt); border:1px solid rgba(255,255,255,.14);}
+    .tiny{margin-top:12px; font-size:12px; color:rgba(255,255,255,.55);}
 
     /* Layout */
-    .wrap{
-      position:relative;
-      z-index:1;
-      width:min(1100px, 100%);
-      margin:0 auto;
-      padding:0 18px 90px;
-    }
+    .wrap{position:relative; z-index:1; width:min(1100px, 100%); margin:0 auto; padding:0 18px 90px;}
     header{
       min-height: 92vh;
-      display:grid;
-      place-items:center;
+      display:grid; place-items:center;
       padding: 90px 0 60px;
       text-align:center;
     }
@@ -192,8 +149,7 @@
     .scrollhint{
       margin-top: 26px;
       display:inline-flex;
-      gap:10px;
-      align-items:center;
+      gap:10px; align-items:center;
       padding: 10px 14px;
       border-radius: 999px;
       background: rgba(255,255,255,.07);
@@ -201,23 +157,11 @@
       color: rgba(255,255,255,.75);
       font-size: 13px;
     }
-    .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 20px rgba(255,79,216,.35);
-    }
+    .dot{width:8px;height:8px;border-radius:999px;background: linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 20px rgba(255,79,216,.35);}
 
-    main{ display:flex; flex-direction:column; gap:18px; }
-
-    .section{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 860px){
-      .section{grid-template-columns:1fr}
-    }
+    main{display:flex; flex-direction:column; gap:18px;}
+    .section{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:stretch;}
+    @media (max-width: 860px){.section{grid-template-columns:1fr}}
 
     .card{
       background: var(--card);
@@ -226,14 +170,11 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .cardInner{ padding: 20px; }
-    .card h2{ margin:0 0 10px; font-size: 22px; letter-spacing:-.02em; }
+    .cardInner{padding: 20px;}
+    .card h2{margin:0 0 10px; font-size: 22px; letter-spacing:-.02em;}
     .pill{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
       background: rgba(255,255,255,.07);
       border:1px solid var(--border);
       color: var(--muted);
@@ -241,94 +182,74 @@
       margin-bottom: 10px;
     }
 
-    .photo{
-      width:100%;
-      min-height: 340px;
-      position:relative;
-      background:#0f0f15;
-    }
-    .photo img{
-      width:100%;
-      height:100%;
-      min-height: 340px;
-      object-fit: cover;
-      display:block;
-    }
-    .photo:after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.55));
-      pointer-events:none;
-    }
+    .photo{width:100%; min-height: 340px; position:relative; background:#0f0f15;}
+    .photo img{width:100%; height:100%; min-height: 340px; object-fit: cover; display:block;}
+    .photo:after{content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.55)); pointer-events:none;}
     .caption{
-      position:absolute;
-      left:16px; right:16px; bottom:14px;
-      z-index:1;
-      color: rgba(255,255,255,.92);
+      position:absolute; left:16px; right:16px; bottom:14px;
+      z-index:1; color: rgba(255,255,255,.92);
       font-weight:950;
       text-shadow: 0 8px 20px rgba(0,0,0,.55);
     }
 
-    /* Reveal */
-    .reveal{
-      opacity:0;
-      transform: translateY(18px);
-      transition: opacity .75s ease, transform .75s ease;
-    }
-    .reveal.show{
-      opacity:1;
-      transform: translateY(0);
-    }
+    .reveal{opacity:0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease;}
+    .reveal.show{opacity:1; transform: translateY(0);}
 
-    footer{
-      padding: 26px 0 40px;
-      text-align:center;
-      color: rgba(255,255,255,.55);
-      font-size: 13px;
+    footer{padding: 26px 0 40px; text-align:center; color: rgba(255,255,255,.55); font-size: 13px;}
+
+    /* Neon Spotify frame */
+    .neonBox{
+      position:relative;
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+    }
+    .neonBox:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent), var(--accent2));
+      filter: blur(18px);
+      opacity:.45;
+      z-index:0;
+    }
+    .neonInner{
+      position:relative;
+      z-index:1;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
     }
 
     /* Music pill */
     .musicPill{
-      position: fixed;
-      right: 14px;
-      bottom: 14px;
-      z-index: 9997;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      padding: 10px 12px;
-      border-radius: 999px;
+      position: fixed; right: 14px; bottom: 14px; z-index: 9997;
+      display:flex; gap:10px; align-items:center;
+      padding: 10px 12px; border-radius: 999px;
       background: rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(8px);
       box-shadow: 0 14px 30px rgba(0,0,0,.25);
-      cursor: pointer;
-      user-select:none;
+      cursor: pointer; user-select:none;
     }
-    .musicDot{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 18px rgba(255,79,216,.35);
-    }
-    .musicText{
-      font-size: 13px;
-      color: rgba(255,255,255,.85);
-      font-weight:800;
-    }
-    .musicHint{
-      font-size: 11px;
-      color: rgba(255,255,255,.55);
-      font-weight:700;
-      margin-left: 4px;
+    .musicDot{width:10px;height:10px;border-radius:999px;background: linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 18px rgba(255,79,216,.35);}
+    .musicText{font-size: 13px; color: rgba(255,255,255,.85); font-weight:900;}
+    .musicHint{font-size: 11px; color: rgba(255,255,255,.55); font-weight:800; margin-left: 4px;}
+
+    /* divider */
+    .softDivider{
+      width:100%; height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      margin: 6px 0 22px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Audio (dosyadan) -->
   <audio id="bgMusic" src="dktdilerim.mp3" loop></audio>
 
-  <!-- background hearts -->
   <div class="hearts-bg" id="heartsBg"></div>
 
   <!-- Gate -->
@@ -337,7 +258,7 @@
       <div class="badge"><span class="heartIcon"></span> İlişki Sözleşmesi v1.0</div>
       <h1>Sözleşmeyi imzalamak ister misin?</h1>
       <p class="muted" id="gateText">
-        Bu sözleşme: bol kahkaha, sonsuz destek, birlikte büyüyen bir “biz” ve her gün biraz daha âşık olmayı içerir. 💘
+        Bu sözleşme: bol kahkaha, sonsuz destek ve her gün biraz daha âşık olmayı içerir. 💘
       </p>
       <div class="actions">
         <button class="yes" id="btnYes">Evet, imzalıyorum 💍</button>
@@ -354,7 +275,6 @@
         <h1 class="title">Sen + Ben = <span style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">en tatlı tesadüf</span></h1>
         <p class="subtitle">
           Aşağı kaydır… Her bölümde bir anı, bir foto, bir cümle.
-          (Ve evet: “Hayır” butonu yakalanmıyor 😈)
         </p>
         <div class="scrollhint"><span class="dot"></span> Aşağı kaydır</div>
       </div>
@@ -414,10 +334,7 @@
         </div>
       </section>
 
-      <!-- Final -->
-      <section class="section reveal">
-        <div class="card">
-          <div class="photo">
+    
             <div class="caption">Final Sahnesi 💘</div>
           </div>
         </div>
@@ -430,43 +347,38 @@
           </div>
         </div>
       </section>
+
+      <!-- Spotify neon final -->
+      <section class="reveal" style="margin-top:80px;">
+        <div class="card" style="padding:26px; text-align:center;">
+          <div class="softDivider"></div>
+          <div class="pill">🎧 Bizim Playlist</div>
+          <h2 style="margin:10px 0 8px;">Senin için</h2>
+          <p class="muted" style="margin:0 0 18px;">Bazı şarkılar vardır, bir kişiyi anlatır.</p>
+
+          <div class="neonBox">
+            <div class="neonInner">
+              <iframe
+                style="border-radius:12px; display:block;"
+                src="https://open.spotify.com/embed/playlist/1boWGmNw2Le5o8KSrJMmBQ?utm_source=generator"
+                width="100%"
+                height="352"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <p class="muted" style="margin:16px 0 0; font-weight:800;">— Senin için 💘</p>
+        </div>
+      </section>
     </main>
-<!-- Spotify Final -->
-<section class="reveal" style="margin-top:80px;">
-  <div class="card" style="padding:30px; text-align:center;">
-    
-    <div style="
-      width:100%;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-      margin-bottom:30px;">
-    </div>
 
-    <div class="pill">🎧 Bizim Playlist</div>
-    <h2 style="margin:10px 0 8px;">Senin için</h2>
-    <p class="muted" style="margin-bottom:20px;">
-      Bazı şarkılar vardır, bir kişiyi anlatır.
-    </p>
-
-    <iframe
-      style="border-radius:12px"
-      src="https://open.spotify.com/embed/playlist/1boWGmNw2Le5o8KSrJMmBQ?utm_source=generator"
-      width="100%"
-      height="352"
-      frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-
-  </div>
-</section>
-
-    <footer class="reveal">Made with 💖 • Evet’e basınca başlayan güzel şeyler var.</footer>
+    <footer class="reveal">Made with 💖</footer>
   </div>
 
-  <!-- Music control pill -->
   <div class="musicPill" id="musicPill" title="Müzik Aç/Kapat">
-    <span class="musicDot" id="musicDot"></span>
+    <span class="musicDot"></span>
     <div>
       <div class="musicText" id="musicText">Müzik: Kapalı</div>
       <div class="musicHint" id="musicHint">Evet deyince başlar</div>
@@ -474,7 +386,6 @@
   </div>
 
   <script>
-    // Elements
     const gate = document.getElementById('gate');
     const modal = document.getElementById('modal');
     const btnYes = document.getElementById('btnYes');
@@ -487,10 +398,10 @@
     const musicText = document.getElementById('musicText');
     const musicHint = document.getElementById('musicHint');
 
-    // Lock scroll while gate is open
+    // lock scroll
     document.body.style.overflowY = 'hidden';
 
-    // Scroll reveal
+    // Reveal
     const revealEls = Array.from(document.querySelectorAll('.reveal'));
     const io = new IntersectionObserver((entries) => {
       for (const e of entries){
@@ -503,31 +414,28 @@
     function revealAll(){ revealEls.forEach(el => io.observe(el)); }
     revealAll();
 
-    // Background hearts generator
+    // BG hearts
     const heartsBg = document.getElementById('heartsBg');
     const heartChars = ["💗","💖","💘","💝","💞"];
-
     function spawnBgHeart(){
       const h = document.createElement('div');
       h.className = 'bg-heart';
       h.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
-
       const left = Math.random()*100;
-      const dur = 7 + Math.random()*6; // 7-13s
-      const size = 14 + Math.random()*20; // 14-34px
-      const drift = (Math.random()*2-1) * 140; // -140..140
-
+      const dur = 7 + Math.random()*6;
+      const size = 14 + Math.random()*20;
+      const drift = (Math.random()*2-1) * 140;
       h.style.left = left + 'vw';
       h.style.animationDuration = dur + 's';
       h.style.fontSize = size + 'px';
       h.style.setProperty('--drift', drift + 'px');
-
+      h.style.opacity = "0";
       heartsBg.appendChild(h);
       setTimeout(() => h.remove(), (dur+0.5)*1000);
     }
     setInterval(spawnBgHeart, 420);
 
-    // Click pop hearts
+    // Click hearts
     window.addEventListener('click', (e) => {
       if (gate.style.display !== 'none') return;
       for (let i=0;i<6;i++){
@@ -544,74 +452,57 @@
       }
     });
 
-    // Gate actions
-    btnYes.addEventListener('click', () => {
-      gate.style.display = 'none';
-      document.body.style.overflowY = 'auto';
-      window.scrollTo({top:0, behavior:'instant'});
-
-      // Start music on user gesture (allowed)
-      bgMusic.volume = 0.6;
-      bgMusic.play().then(() => {
-        musicText.textContent = "Müzik: Açık";
-        musicHint.textContent = "Kapatmak için tıkla";
-      }).catch(() => {
-        // If blocked for any reason (rare here), user can toggle with pill
-        musicText.textContent = "Müzik: Kapalı";
-        musicHint.textContent = "Açmak için tıkla";
-      });
-
-      revealAll();
-    });
-
-    // RUNAWAY "No" button
-    btnNo.style.position = 'relative';
-
-    function moveNoButton(){
-      // keep it within modal area
-      const maxX = 240;
-      const maxY = 130;
-
-      const x = (Math.random() * maxX) - (maxX / 2);
-      const y = (Math.random() * maxY) - (maxY / 2);
-
-      btnNo.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    // on hover (desktop)
-    btnNo.addEventListener('mouseenter', () => {
-      moveNoButton();
-      modal.classList.remove('shake'); void modal.offsetWidth; modal.classList.add('shake');
-      gateText.textContent = "Hayır mı? Yakalamaya çalış bakalım 😈 (Evet daha kolay.)";
-      tinyNote.textContent = "İpucu: Evet = müzik + hikaye + kalpler";
-    });
-
-    // on click (mobile)
-    btnNo.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      moveNoButton();
-      btnNo.textContent = "Yakalayamazsın 😜";
-    }, {passive:false});
-
-    btnNo.addEventListener('click', () => {
-      moveNoButton();
-      btnNo.textContent = "Yakalayamazsın 😜";
-    });
-
-    // Music toggle pill
+    // Music UI
     function setMusicUI(isOn){
       musicText.textContent = "Müzik: " + (isOn ? "Açık" : "Kapalı");
       musicHint.textContent = isOn ? "Kapatmak için tıkla" : "Açmak için tıkla";
     }
+    setMusicUI(false);
 
+    // YES
+    btnYes.addEventListener('click', () => {
+      gate.style.display = 'none';
+      document.body.style.overflowY = 'auto';
+      window.scrollTo({top:0, behavior:'instant'});
+      bgMusic.volume = 0.6;
+      bgMusic.play().then(() => setMusicUI(true)).catch(() => setMusicUI(false));
+      revealAll();
+    });
+
+    // NO: multi-step confirm (mobile friendly)
+    const noSteps = [
+      { t:"Emin misin? 😏", s:"Hayır diyorsan… kalbim minik bir titredi.", b:"Eminim 🙃" },
+      { t:"Tekrar düşün…", s:"Bak cidden bir daha soruyorum. Son kararın mı?", b:"Evet, son kararım" },
+      { t:"Bak son şansın.", s:"Evet’e basarsan müzik başlıyor, hikaye akıyor…", b:"Gerçekten mi?" },
+      { t:"Gerçekten mi? 😳", s:"Tamam… ama sonra ‘keşke’ deme.", b:"Tamam…" }
+    ];
+    let noIdx = 0;
+
+    btnNo.addEventListener('click', () => {
+      const step = noSteps[Math.min(noIdx, noSteps.length-1)];
+      modal.classList.remove('shake'); void modal.offsetWidth; modal.classList.add('shake');
+
+      gateText.textContent = step.s;
+      tinyNote.textContent = step.t;
+
+      btnNo.textContent = step.b;
+      btnYes.textContent = "Evet (gel barışalım) 💍";
+
+      noIdx++;
+
+      // En son adımda "Hayır"ı disable gibi yapalım (isteğe bağlı)
+      if (noIdx >= noSteps.length){
+        btnNo.style.opacity = "0.75";
+      }
+    });
+
+    // Music toggle
     musicPill.addEventListener('click', async () => {
-      // If gate is still open, hint user
       if (gate.style.display !== 'none'){
         modal.classList.remove('shake'); void modal.offsetWidth; modal.classList.add('shake');
         tinyNote.textContent = "Önce sözleşme 😌 (Evet deyince müzik başlar)";
         return;
       }
-
       if (!bgMusic.paused){
         bgMusic.pause();
         setMusicUI(false);
@@ -625,11 +516,6 @@
         }
       }
     });
-
-    // Initial UI
-    setMusicUI(false);
   </script>
 </body>
 </html>
-
-
