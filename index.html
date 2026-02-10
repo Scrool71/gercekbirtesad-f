@@ -29,7 +29,7 @@
         var(--bg);
     }
 
-    /* BG hearts (floating) */
+    /* BG floating hearts */
     .hearts-bg{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;}
     .bg-heart{
       position:absolute; bottom:-70px;
@@ -58,7 +58,23 @@
       100%{ transform: translate(-50%,-140%) scale(1.45) rotate(12deg); opacity:0; }
     }
 
-    /* Gate / Quiz modal */
+    /* Confetti */
+    .confetti{
+      position:fixed;
+      left:0; top:0;
+      pointer-events:none;
+      z-index: 100000;
+      animation: confFall 1200ms ease forwards;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.25));
+      will-change: transform, opacity;
+    }
+    @keyframes confFall{
+      0%{ transform: translate(-50%,-50%) translateY(-10px) rotate(0deg) scale(.9); opacity:0; }
+      10%{ opacity:1; }
+      100%{ transform: translate(-50%,-50%) translateY(220px) rotate(220deg) scale(1.1); opacity:0; }
+    }
+
+    /* Gate / Quiz */
     #gate{
       position:fixed; inset:0;
       display:grid; place-items:center;
@@ -159,13 +175,6 @@
     }
     .qTitle{font-size: 16px; font-weight:950; margin:0 0 6px;}
     .qSub{margin:0; color:rgba(255,255,255,.65); font-size:13px; line-height:1.5;}
-    .resultText{
-      font-size:18px;
-      font-weight:950;
-      margin: 8px 0 0;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
 
     /* Page layout */
     .wrap{position:relative; z-index:1; width:min(1100px, 100%); margin:0 auto; padding:0 18px 90px;}
@@ -270,7 +279,7 @@
       margin: 6px 0 22px;
     }
 
-    /* Final question buttons */
+    /* Final buttons/message */
     .finalQBtns{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px;}
     .finalMsg{margin-top:14px; font-weight:900; color:rgba(255,255,255,.88);}
     .finalMsg small{display:block; margin-top:6px; font-weight:700; color:rgba(255,255,255,.6);}
@@ -290,13 +299,13 @@
     .musicText{font-size: 13px; color: rgba(255,255,255,.85); font-weight:900;}
     .musicHint{font-size: 11px; color: rgba(255,255,255,.55); font-weight:800; margin-left: 4px;}
 
-    /* Big celebration overlay */
+    /* Celebration overlay */
     #celebrate{
       position:fixed; inset:0;
       display:none;
       place-items:center;
       z-index:99999;
-      background: rgba(10,10,16,.55);
+      background: rgba(10,10,16,.45);
       backdrop-filter: blur(8px);
     }
     .celebrateCard{
@@ -333,13 +342,12 @@
   <audio id="bgMusic" src="dktdilerim.mp3" loop></audio>
   <div class="hearts-bg" id="heartsBg"></div>
 
-  <!-- Celebration overlay -->
   <div id="celebrate">
     <div class="celebrateCard">
       <div class="celebrateInner">
         <div class="badge" style="justify-content:center;"><span class="heartIcon"></span> Resmi olarak: BİZ 💍</div>
         <h2 class="celebrateTitle">Evet sevgilim…</h2>
-        <p class="celebrateSub"><br>seni çok seviyorum sevgilim.</p>
+        <p class="celebrateSub">Tamam. O zaman kalp + konfeti yağmuru başlıyor.<br>Ve ben seni daha çok seviyorum.</p>
       </div>
     </div>
   </div>
@@ -350,15 +358,15 @@
       <div class="quizTop">
         <div class="badge"><span class="heartIcon"></span> Aşk & Sevgililik Sözleşmesi</div>
         <div class="progressWrap">
-          <div class="bar" aria-label="İlerleme"><span id="barFill"></span></div>
-          <div class="badge" id="stepText" style="padding:8px 12px;">0/20</div>
+          <div class="bar"><span id="barFill"></span></div>
+          <div class="badge" id="stepText" style="padding:8px 12px;">0/10</div>
         </div>
       </div>
 
       <h1 id="gateTitle">Hazırsan başlayalım…</h1>
       <p class="muted" id="gateText">
-        Bu mini sözleşme: iletişim, güven, sorumluluk ve “biz” olabilme üzerine.
-        20 soruya içinden geldiği gibi <b>Evet/Hayır</b> de. 💘
+        10 hızlı soru: güven, iletişim, sorumluluk…<br>
+        İçinden geldiği gibi <b>Evet/Hayır</b> de. 💘
       </p>
 
       <div class="qBox" id="qBox" style="display:none;">
@@ -380,11 +388,10 @@
         <button class="yes" id="btnEnter">Siteye geç 💍</button>
       </div>
 
-      <div class="tiny" id="tinyNote">* Siteye geçince müzik başlar, kalpler uçuşur, hikaye akar.</div>
+      <div class="tiny" id="tinyNote">* Siteye geçince müzik başlar 😌</div>
     </div>
   </div>
 
-  <!-- Page -->
   <div class="wrap">
     <header class="reveal">
       <div>
@@ -396,13 +403,12 @@
     </header>
 
     <main>
-      <!-- 1 -->
       <section class="section reveal">
         <div class="card">
           <div class="cardInner">
             <div class="pill">📍 Bölüm 1 • Tanışma</div>
             <h2>İlk gün… “bu kız başka” dediğim an</h2>
-            <p class="muted">İnstagram mı bizi karşılaştıran yoksa gerçekten karşılaşmamızı isteyen bir hayatta mı yaşıyorduk? </p>
+            <p class="muted">Buraya kısa bir anı yaz.</p>
           </div>
         </div>
         <div class="card">
@@ -413,7 +419,6 @@
         </div>
       </section>
 
-      <!-- 2 -->
       <section class="section reveal">
         <div class="card">
           <div class="photo">
@@ -424,13 +429,12 @@
         <div class="card">
           <div class="cardInner">
             <div class="pill">☕ Bölüm 2 • İlk Buluşma</div>
-            <h2>Sıkılmadan Senle Her Şeyi Yapabileceğime inandırdırğın için teşekkür eder.</h2>
-            <p class="muted">Bahçeli Şantiye tekrarlanmalııı</p>
+            <h2>“Şuraya gidelim” dediğin an ben tamamım</h2>
+            <p class="muted">O günün detayları buraya.</p>
           </div>
         </div>
       </section>
 
-      <!-- 3 -->
       <section class="section reveal">
         <div class="card">
           <div class="cardInner">
@@ -449,7 +453,6 @@
         </div>
       </section>
 
-      <!-- Spotify neon final -->
       <section class="reveal" style="margin-top:80px;">
         <div class="card" style="padding:26px; text-align:center;">
           <div class="softDivider"></div>
@@ -470,13 +473,10 @@
             </div>
           </div>
 
-          <!-- Final question after spotify -->
           <div class="softDivider" style="margin-top:26px;"></div>
           <div class="pill">✅ Gerçekler</div>
           <h2 style="margin:10px 0 8px;">Benimle birlikte hayata değer katmaya var mısın?</h2>
-          <p class="muted" style="margin:0 0 10px;">
-            Son soru bu. Cevabın ne olursa olsun, ben seni hep tatlı hatırlayacağım.
-          </p>
+          <p class="muted" style="margin:0 0 10px;">Cevabın ne olursa olsun, ben seni tatlı hatırlayacağım.</p>
 
           <div class="finalQBtns" id="finalBtns">
             <button class="yes" id="finalYes">Evet sevgilim 💍</button>
@@ -502,10 +502,9 @@
   </div>
 
   <script>
-    // Elements
+    // Gate elements
     const gate = document.getElementById('gate');
     const modal = document.getElementById('modal');
-
     const gateTitle = document.getElementById('gateTitle');
     const gateText  = document.getElementById('gateText');
 
@@ -527,20 +526,20 @@
     const stepText = document.getElementById('stepText');
     const tinyNote = document.getElementById('tinyNote');
 
+    // Music
     const bgMusic = document.getElementById('bgMusic');
     const musicPill = document.getElementById('musicPill');
     const musicText = document.getElementById('musicText');
     const musicHint = document.getElementById('musicHint');
 
-    // Final question elements
+    // Final
     const finalYes = document.getElementById('finalYes');
     const finalNo = document.getElementById('finalNo');
     const finalBtns = document.getElementById('finalBtns');
     const finalMsg = document.getElementById('finalMsg');
-
     const celebrate = document.getElementById('celebrate');
 
-    // Lock scroll while gate open
+    // lock scroll
     document.body.style.overflowY = 'hidden';
 
     // Reveal
@@ -556,10 +555,9 @@
     function revealAll(){ revealEls.forEach(el => io.observe(el)); }
     revealAll();
 
-    // BG hearts (floating)
+    // BG hearts floating
     const heartsBg = document.getElementById('heartsBg');
     const heartChars = ["💗","💖","💘","💝","💞","❤️","🩷"];
-
     function spawnBgHeart(){
       const h = document.createElement('div');
       h.className = 'bg-heart';
@@ -577,22 +575,40 @@
     }
     setInterval(spawnBgHeart, 420);
 
-    // Click hearts (after entering)
-    function popHeartsAt(x,y,count=8){
+    // Heart pop at x,y
+    function popHeartsAt(x,y,count=10){
       for (let i=0;i<count;i++){
         const ph = document.createElement('div');
         ph.className = 'pop-heart';
         ph.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
-        const jitterX = (Math.random()*2-1)*34;
+        const jitterX = (Math.random()*2-1)*36;
         const jitterY = (Math.random()*2-1)*22;
         ph.style.left = (x + jitterX) + 'px';
         ph.style.top  = (y + jitterY) + 'px';
-        ph.style.fontSize = (14 + Math.random()*22) + 'px';
+        ph.style.fontSize = (14 + Math.random()*24) + 'px';
         document.body.appendChild(ph);
         setTimeout(() => ph.remove(), 950);
       }
     }
 
+    // Confetti burst at x,y
+    const confettiChars = ["✨","🎉","🎊","💫","🌟","🪩"];
+    function confettiBurstAt(x,y,count=14){
+      for (let i=0;i<count;i++){
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.textContent = confettiChars[Math.floor(Math.random()*confettiChars.length)];
+        const jitterX = (Math.random()*2-1)*70;
+        const jitterY = (Math.random()*2-1)*30;
+        c.style.left = (x + jitterX) + 'px';
+        c.style.top  = (y + jitterY) + 'px';
+        c.style.fontSize = (14 + Math.random()*22) + 'px';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 1250);
+      }
+    }
+
+    // click effect after gate
     window.addEventListener('click', (e) => {
       if (gate.style.display !== 'none') return;
       popHeartsAt(e.clientX, e.clientY, 6);
@@ -605,32 +621,21 @@
     }
     setMusicUI(false);
 
-    // Quiz questions (20)
+    // Questions = 10
     const questions = [
       { q:"Zor konuları bile kırmadan konuşabileceğimize inanıyor musun?", s:"İletişim: tartışmak değil, çözmek." },
-      { q:"Güvenin ‘kontrol’ değil, ‘rahatlık’ olduğuna katılıyor musun?", s:"Kıskançlık yerine şeffaflık." },
-      { q:"Hatalarda ‘özür’ ve ‘telafi’nin kıymetli olduğuna inanıyor musun?", s:"Kırmak kolay, onarmak değer." },
-      { q:"Ailelerle sınır ve saygıyı beraber kurabilir miyiz?", s:"Biz bir takımız, dış dünya ikinci." },
-      { q:"Para konularını açıkça konuşmaya var mısın?", s:"Bütçe, hedef, birikim — netlik huzur." },
-      { q:"Zor günlerde birbirimizi ‘taşımayı’ göze alır mıyız?", s:"Bugün sen, yarın ben." },
-      { q:"Birbirimizin hayallerini ciddiye alıp destekler miyiz?", s:"Küçük bir ‘hadi’ bile hayat değiştirir." },
-      { q:"Ev düzeni/iş bölümü gibi şeyleri adilce paylaşmaya var mısın?", s:"‘Yardım’ değil, ortak sorumluluk." },
-      { q:"Tartışmada bağırmak yerine ara verip sakinleşebilir miyiz?", s:"Mola = kaçmak değil, saygı." },
-      { q:"Sınırlarımızı (telefon/özel alan/arkadaşlar) saygıyla korur muyuz?", s:"Sevgi, boğmak değil." },
-      { q:"İyi günde eğlenip kötü günde kenetlenmeye tamam mısın?", s:"Mutluluk da, kriz de paylaşınca güzel." },
-      { q:"Birbirimizi ‘düzeltmek’ yerine ‘anlamayı’ dener miyiz?", s:"Mükemmel değil, gerçek." },
-      { q:"Kariyer/şehir/taşınma gibi kararları birlikte planlar mıyız?", s:"Ben değil, biz." },
-      { q:"Sağlık ve dinlenme konularında birbirimizi koruruna girer miyiz?", s:"Sevgi bazen ‘kendine dikkat et’ demektir." },
-      { q:"Romantizmi küçük şeylerle bile canlı tutar mıyız?", s:"Not, mesaj, sarılma — hepsi sayılır." },
-      { q:"Sorunları biriktirmeden konuşmayı dener misin?", s:"Susmak büyütür." },
-      { q:"Yalanın ‘küçüğü büyüğü’ olmadığına katılır mısın?", s:"Güven bir kere kırılırsa zor." },
-      { q:"Kırıldığında açıkça söyleyebilir misin?", s:"Kalp okumak yok, netlik var." },
-      { q:"Birlikte hedef koyup adım adım yürümeye var mısın?", s:"Plan = huzur." },
-      { q:"En önemlisi: Beni ‘ev’ gibi hissediyor musun?", s:"Bir insanın en güzel yeri bazen bir insanın içidir." },
+      { q:"Güvenin ‘kontrol’ değil, ‘rahatlık’ olduğuna katılıyor musun?", s:"Şeffaflık + huzur." },
+      { q:"Hatalarda ‘özür’ ve ‘telafi’yi gerçekten yapar mısın?", s:"Onarmak = sevgi." },
+      { q:"Para/gelecek planlarını açıkça konuşmaya var mısın?", s:"Bütçe, hedef, birikim." },
+      { q:"Tartışmada bağırmak yerine ara verip sakinleşebilir miyiz?", s:"Mola = saygı." },
+      { q:"Ailelerle sınır ve saygıyı beraber kurabilir miyiz?", s:"Biz bir takımız." },
+      { q:"Ev düzeni/iş bölümü gibi şeyleri adilce paylaşır mıyız?", s:"Ortak sorumluluk." },
+      { q:"Romantizmi küçük şeylerle canlı tutar mıyız?", s:"Not, mesaj, sarılma." },
+      { q:"Zor günlerde birbirimizi ‘taşımaya’ tamam mısın?", s:"Bugün sen, yarın ben." },
+      { q:"En önemlisi: Beni ‘ev’ gibi hissediyor musun?", s:"En güzel yer bazen bir insan." },
     ];
 
     let idx = -1;
-    let peeked = false;
 
     function updateProgress(){
       const total = questions.length;
@@ -651,7 +656,6 @@
         "5) Biz: aynı takım, aynı hedef.<br><br>" +
         "Hazırsan sorulara geçelim.";
       btnStart.textContent = "Başlayalım ✨";
-      peeked = true;
     }
 
     function startQuiz(){
@@ -695,7 +699,6 @@
       document.body.style.overflowY = 'auto';
       window.scrollTo({top:0, behavior:'instant'});
 
-      // start music
       bgMusic.volume = 0.6;
       bgMusic.play().then(()=>setMusicUI(true)).catch(()=>setMusicUI(false));
 
@@ -724,21 +727,21 @@
       }
     });
 
-    // Final question logic
-    let loveLoop = null;
-    function startLoveExplosion(){
+    // Final yes/no -> heart+confetti loop
+    let partyLoop = null;
+    function startParty(){
       celebrate.style.display = "grid";
       finalBtns.style.display = "none";
       finalMsg.style.display = "block";
-      finalMsg.innerHTML = "TAMAMDIR. Artık kalpler her yerde. 💘<small>(Bu ekranı kapatmak istersen sayfayı yenile 😄)</small>";
+      finalMsg.innerHTML = "TAMAMDIR! 💘 Kalpler + konfeti başladı.<small>(Durdurmak için sayfayı yenile 😄)</small>";
 
-      // constant heart pops everywhere
-      if (loveLoop) clearInterval(loveLoop);
-      loveLoop = setInterval(() => {
+      if (partyLoop) clearInterval(partyLoop);
+      partyLoop = setInterval(() => {
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
         popHeartsAt(x, y, 10);
-      }, 140);
+        confettiBurstAt(x, y, 10);
+      }, 170);
     }
 
     function denyMessage(){
@@ -747,18 +750,11 @@
       finalMsg.textContent = "Kusura bakma sadece denemek istedim";
     }
 
-    finalYes.addEventListener('click', () => {
-      startLoveExplosion();
-    });
-
-    finalNo.addEventListener('click', () => {
-      denyMessage();
-    });
+    finalYes.addEventListener('click', () => startParty());
+    finalNo.addEventListener('click', () => denyMessage());
 
     // Init
     updateProgress();
   </script>
 </body>
 </html>
-
-
